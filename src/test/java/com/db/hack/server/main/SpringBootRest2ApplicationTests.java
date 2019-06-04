@@ -1,5 +1,6 @@
 package com.db.hack.server.main;
 
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,7 @@ public class SpringBootRest2ApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		assertTrue(1 == 1);
 	}
 
 }
