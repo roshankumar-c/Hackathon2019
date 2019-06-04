@@ -23,6 +23,7 @@ public class DatabaseConnectionFactory {
 
             try {
                 connection = DriverManager.getConnection (url, username, password );
+                System.out.println("Connection created :: "+ connection.getMetaData());
                 statement  = connection.createStatement();
             }
             catch (SQLException exception ) {
@@ -41,4 +42,7 @@ public class DatabaseConnectionFactory {
             }
         }
 
+    public Connection getConnection() {
+        return connection;
+    }
 }
