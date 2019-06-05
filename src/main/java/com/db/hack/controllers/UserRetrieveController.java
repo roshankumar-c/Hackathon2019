@@ -16,8 +16,8 @@ public class UserRetrieveController {
 	@RequestMapping(method = RequestMethod.GET, value="/student/allstudent")
 
 	@ResponseBody
-	public List<User> getStudent() {
-		return UserRegistration.getInstance().getUserRecords();
+	public String getStudent() {
+		return "";
 	}
 
 }

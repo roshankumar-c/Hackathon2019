@@ -16,7 +16,7 @@ public class UserDeleteController {
 	@ResponseBody
 	public String deleteStudentRecord(@PathVariable("regdNum") String regdNum) {		
 		System.out.println("In deleteStudentRecord");	   
-	    return UserRegistration.getInstance().deleteStudent(regdNum);
+	    return "";
 	}	
 
 }

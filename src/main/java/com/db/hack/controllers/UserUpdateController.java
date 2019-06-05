@@ -18,7 +18,7 @@ public class UserUpdateController {
 	@ResponseBody
 	public String updateStudentRecord(@RequestBody User stdn) {
 		System.out.println("In updateStudentRecord");	   
-	    return UserRegistration.getInstance().upDateStudent(stdn);
+	    return "";
 	}	
 
 }
