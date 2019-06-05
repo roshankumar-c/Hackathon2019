@@ -38,6 +38,7 @@ public class QuestionsRetrieval {
                     Question ques = new Question();
                     ques.setCategory(result.getString("topic"));
                     ques.setCorrectAnswer(result.getInt("correct_answer"));
+                    ques.setQuestion(result.getString("question"));
                     List<String> choices = new ArrayList<>();
                     choices.add(result.getString("option1"));
                     choices.add(result.getString("option2"));
