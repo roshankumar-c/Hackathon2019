@@ -19,7 +19,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "category",
         "question",
         "choices",
-        "correctAnswer"
+        "correctAnswer",
+        "questionHint",
+        "rationale",
+        "difficultyLevel"
 })
     public class Question {
 
@@ -27,6 +30,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         private String category;
         @JsonProperty("question")
         private String question;
+        @JsonProperty("questionHint")
+        private String questionHint;
+        @JsonProperty("rationale")
+        private String rationale;
+        @JsonProperty("difficultyLevel")
+        private String difficultyLevel;
         @JsonProperty("choices")
         private List<String> choices = null;
         @JsonProperty("correctAnswer")
@@ -52,6 +61,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         @JsonProperty("question")
         public void setQuestion(String question) {
             this.question = question;
+        }
+
+        @JsonProperty("questionHint")
+        public String getQuestionHint() {
+            return questionHint;
+        }
+
+        @JsonProperty("questionHint")
+        public void setQuestionHint(String questionHint) {
+            this.questionHint = questionHint;
+        }
+
+        @JsonProperty("rationale")
+        public String getRationale() {
+            return rationale;
+        }
+
+        @JsonProperty("rationale")
+        public void setRationale(String rationale) {
+            this.rationale = rationale;
+        }
+
+        @JsonProperty("difficultyLevel")
+        public String getDifficultyLevel() {
+            return difficultyLevel;
+        }
+
+        @JsonProperty("difficultyLevel")
+        public void setDifficultyLevel(String difficultyLevel) {
+            this.difficultyLevel = difficultyLevel;
         }
 
         @JsonProperty("choices")

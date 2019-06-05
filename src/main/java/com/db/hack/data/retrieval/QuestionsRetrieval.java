@@ -45,6 +45,9 @@ public class QuestionsRetrieval {
                     choices.add(result.getString("option3"));
                     choices.add(result.getString("option4"));
                     ques.setChoices(choices);
+                    ques.setQuestionHint(result.getString("question_hint"));
+                    ques.setDifficultyLevel(result.getString("difficulty_level"));
+                    ques.setRationale(result.getString("Rationale"));
                     questionsList.add(ques);
                   /*  questionsList.add(new Question(result.getInt("ID"),result.getString("question"),result.getString("option1"),
                             result.getString("option2"),result.getString("option3"),result.getString("option4"),
