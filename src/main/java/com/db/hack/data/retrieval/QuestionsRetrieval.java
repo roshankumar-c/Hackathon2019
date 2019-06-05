@@ -35,10 +35,20 @@ public class QuestionsRetrieval {
                         "grade,difficulty_level,correct_answer,Rationale,question_hint from dbo.Questions");
                 while (result.next())
                 {
-                    questionsList.add(new Question(result.getInt("ID"),result.getString("question"),result.getString("option1"),
+                    Question ques = new Question();
+                    ques.setCategory(result.getString("topic"));
+                    ques.setCorrectAnswer(result.getInt("correct_answer"));
+                    List<String> choices = new ArrayList<>();
+                    choices.add(result.getString("option1"));
+                    choices.add(result.getString("option2"));
+                    choices.add(result.getString("option3"));
+                    choices.add(result.getString("option4"));
+                    ques.setChoices(choices);
+                    questionsList.add(ques);
+                  /*  questionsList.add(new Question(result.getInt("ID"),result.getString("question"),result.getString("option1"),
                             result.getString("option2"),result.getString("option3"),result.getString("option4"),
                             result.getString("correct_answer"),result.getString("topic"), result.getString("grade"),result.getString("difficulty_level"),
-                            result.getString("Rationale"),result.getString("question_hint")));
+                            result.getString("Rationale"),result.getString("question_hint")));*/
                     /**
                      * create table dbo.Questions
                      ( ID int PRIMARY KEY IDENTITY(1,1),
