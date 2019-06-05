@@ -5,13 +5,47 @@ import java.util.List;
 
 public class UserRegistration {
 	
-	private List<User> userRecords;
-	
+	private String firstName;
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	private String lastName;
+	private String grade;
+	private String role;
+
 	private static UserRegistration stdregd = null;
 	
-	private UserRegistration(){
-		userRecords = new ArrayList<User>();
-	}
+
 	
 	public static UserRegistration getInstance() {
 		
@@ -23,45 +57,6 @@ public class UserRegistration {
 			return stdregd;
 		}
 	}
-	
-	public void add(User std) {
-		userRecords.add(std);
-	}
-	
-	public String upDateStudent(User std) {
-		
-		for(int i = 0; i< userRecords.size(); i++)
-        {
-            User stdn = userRecords.get(i);
-            System.out.println(stdn.getRegistrationNumber());
-            System.out.println(std.getRegistrationNumber());
-            if(stdn.getRegistrationNumber().equals(std.getRegistrationNumber())) {
-            	userRecords.set(i, std);//update the new record
-            	return "Update successful";
-            }
-        }
-		
-		return "Update un-successful";
-		
-	}
-	
-	public String deleteStudent(String registrationNumber) {
-		
-		for(int i = 0; i< userRecords.size(); i++)
-        {
-            User stdn = userRecords.get(i);
-            if(stdn.getRegistrationNumber().equals(registrationNumber)) {
-            	userRecords.remove(i);//update the new record
-            	return "Delete successful";
-            }
-        }
-		
-		return "Delete un-successful";
-		
-	}
 
-	public List<User> getUserRecords() {
-		return userRecords;
-	}
 
 }

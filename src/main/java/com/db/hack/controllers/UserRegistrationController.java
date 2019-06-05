@@ -15,12 +15,10 @@ public class UserRegistrationController {
 
 	
 	@ResponseBody
-	StudentRegistrationReply registerStudent(@RequestBody User user) {
+    UserRegistrationReply registerUser(@RequestBody User user) {
 		
-		System.out.println("In registerStudent");
-        StudentRegistrationReply stdregreply = new StudentRegistrationReply();           
-
-        UserRegistration.getInstance().add(user);
+		System.out.println("In register user");
+        UserRegistrationReply stdregreply = new UserRegistrationReply();
 
         //We are setting the below value just to reply a message back to the caller
         stdregreply.setName(user.getName());

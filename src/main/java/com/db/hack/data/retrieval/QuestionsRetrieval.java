@@ -5,6 +5,7 @@ import com.db.hack.databse.DatabaseConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class QuestionsRetrieval {
 
 
 
-    public List<Question> getAllQuestions(){
+    public List<Question> getAllQuestions() {
         List<Question> questionsList = new ArrayList<>();
         Connection conn = dataBaseConnectionFactory.getConnection();
         if (conn!=null)
@@ -49,10 +50,7 @@ public class QuestionsRetrieval {
                     ques.setDifficultyLevel(result.getString("difficulty_level"));
                     ques.setRationale(result.getString("Rationale"));
                     questionsList.add(ques);
-                  /*  questionsList.add(new Question(result.getInt("ID"),result.getString("question"),result.getString("option1"),
-                            result.getString("option2"),result.getString("option3"),result.getString("option4"),
-                            result.getString("correct_answer"),result.getString("topic"), result.getString("grade"),result.getString("difficulty_level"),
-                            result.getString("Rationale"),result.getString("question_hint")));*/
+
                     /**
                      * create table dbo.Questions
                      ( ID int PRIMARY KEY IDENTITY(1,1),
@@ -74,7 +72,14 @@ public class QuestionsRetrieval {
             }
             catch(Exception e)
             {
+                e.printStackTrace();
 
+            }finally{
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
