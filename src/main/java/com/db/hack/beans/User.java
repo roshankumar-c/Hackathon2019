@@ -1,6 +1,6 @@
 package com.db.hack.beans;
 
-public class Student {
+public class User {
 	
 	String name;
 	int age;

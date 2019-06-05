@@ -1,8 +1,6 @@
 package com.db.hack.controllers;
 
 import com.db.hack.beans.Question;
-import com.db.hack.beans.Student;
-import com.db.hack.beans.StudentRegistration;
 import com.db.hack.data.retrieval.QuestionsRetrieval;
 import com.db.hack.databse.DatabaseConnectionFactory;
 import com.db.hack.json.JsonData;

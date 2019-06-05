@@ -1,7 +1,5 @@
 package com.db.hack.controllers;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,23 +9,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.db.hack.beans.*;
 
 @Controller
-public class StudentRegistrationController {
+public class UserRegistrationController {
 	
-	@RequestMapping(method = RequestMethod.POST, value="/register/student")
+	@RequestMapping(method = RequestMethod.POST, value="/register/user")
 
 	
 	@ResponseBody
-	StudentRegistrationReply registerStudent(@RequestBody Student student) {
+	StudentRegistrationReply registerStudent(@RequestBody User user) {
 		
 		System.out.println("In registerStudent");
         StudentRegistrationReply stdregreply = new StudentRegistrationReply();           
 
-        StudentRegistration.getInstance().add(student);
+        UserRegistration.getInstance().add(user);
 
         //We are setting the below value just to reply a message back to the caller
-        stdregreply.setName(student.getName());
-        stdregreply.setAge(student.getAge());
-        stdregreply.setRegistrationNumber(student.getRegistrationNumber());
+        stdregreply.setName(user.getName());
+        stdregreply.setAge(user.getAge());
+        stdregreply.setRegistrationNumber(user.getRegistrationNumber());
         stdregreply.setRegistrationStatus("Successful");
 
 
