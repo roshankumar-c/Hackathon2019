@@ -176,6 +176,14 @@ public class UserRegistration {
 			this.additionalProperties.put(name, value);
 		}
 
+		@Override
+		public String toString() {
+			return "UserRegistration [username=" + username + ", password=" + password + ", confimpassword="
+					+ confimpassword + ", studentId=" + studentId + ", firstName=" + firstName + ", middleInitial="
+					+ middleInitial + ", lastName=" + lastName + ", dob=" + dob + ", gender=" + gender + ", grade="
+					+ grade + ", course=" + course + ", additionalProperties=" + additionalProperties + "]";
+		}
+
 
 
 }

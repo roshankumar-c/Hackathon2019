@@ -25,6 +25,8 @@ public class UserRegistrationSave {
 
         try(Connection conn = dataBaseConnectionFactory.getConnection())
         {
+        	System.out.println(userReg.toString());
+        	
             // the mysql insert statement
             String query = "INSERT INTO dbo.users (first_name, last_name, userid, passwd, " +
                     "role, schoool, grade, is_certified, created_date ) VALUES"
@@ -34,13 +36,13 @@ public class UserRegistrationSave {
             java.sql.Date ourJavaDateObject = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setString (1, userReg.getFirstName());
-            preparedStmt.setString(2, userReg.getLastName());
-            preparedStmt.setString (3, userReg.getUsername());
-            preparedStmt.setString(4, userReg.getPassword());
-            preparedStmt.setString(5, userReg.getCourse());
-            preparedStmt.setString(6, userReg.getCourse());
-            preparedStmt.setString(7, userReg.getGrade());
+            preparedStmt.setString (1, userReg.getFirstName().trim());
+            preparedStmt.setString(2, userReg.getLastName().trim());
+            preparedStmt.setString (3, userReg.getUsername().trim());
+            preparedStmt.setString(4, userReg.getPassword().trim());
+            preparedStmt.setString(5, userReg.getCourse().trim());
+            preparedStmt.setString(6, userReg.getCourse().trim());
+            preparedStmt.setString(7, userReg.getGrade().trim());
             preparedStmt.setInt(8, 0);
             preparedStmt.setDate  (9, ourJavaDateObject);
 
