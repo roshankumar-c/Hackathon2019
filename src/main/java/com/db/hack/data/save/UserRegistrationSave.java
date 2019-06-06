@@ -41,7 +41,7 @@ public class UserRegistrationSave {
             preparedStmt.setString(5, userReg.getCourse());
             preparedStmt.setString(6, userReg.getCourse());
             preparedStmt.setString(7, userReg.getGrade());
-            preparedStmt.setString(8, "false");
+            preparedStmt.setInt(8, 0);
             preparedStmt.setDate  (9, ourJavaDateObject);
 
         // execute the preparedstatement

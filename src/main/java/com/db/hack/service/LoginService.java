@@ -18,9 +18,6 @@ public class LoginService {
 
 	public Boolean authenticate(Login login) {
 
-
-
-
 			try(Connection conn = dataBaseConnectionFactory.getConnection();
 				Statement select = conn.createStatement();
 				ResultSet result = select.executeQuery("Select * from dbo.users where userid = '"+login.getLoginID()+"' AND passwd='"+login.getPasswd()+"'")){
