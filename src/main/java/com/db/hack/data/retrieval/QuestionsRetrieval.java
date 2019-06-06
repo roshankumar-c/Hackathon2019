@@ -98,8 +98,8 @@ public class QuestionsRetrieval {
             {
                 Statement select = conn.createStatement();
                 String sql = "Select ID,question,option1,option2,option3,option4,topic," +
-                        "grade,difficulty_level,correct_answer,Rationale,question_hint from dbo.Questions where difficulty_level = '" + getQuestion.getLevel()
-                        +"' and " + "topic = '"+ getQuestion.getTopic()+"'";
+                        "grade,difficulty_level,correct_answer,Rationale,question_hint from dbo.Questions where difficulty_level = '" + getQuestion.getLevel().trim()
+                        +"' and " + "topic = '"+ getQuestion.getTopic().trim()+"'";
                 
                 System.out.println(sql);
                 ResultSet result=select.executeQuery(sql);
