@@ -1,5 +1,8 @@
 package com.db.hack.controllers;
 
+import com.db.hack.data.save.UserRegistrationSave;
+import com.db.hack.databse.DatabaseConnectionFactory;
+import com.db.hack.service.LoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,23 +14,16 @@ import com.db.hack.beans.*;
 @Controller
 public class UserRegistrationController {
 	
-	@RequestMapping(method = RequestMethod.POST, value="/register/user")
+	@RequestMapping(method = RequestMethod.POST, value="/register")
 
 	
 	@ResponseBody
-    UserRegistrationReply registerUser(@RequestBody User user) {
+    Boolean registerUser(@RequestBody UserRegistration userReg) {
 		
 		System.out.println("In register user");
-        UserRegistrationReply stdregreply = new UserRegistrationReply();
-
-        //We are setting the below value just to reply a message back to the caller
-        stdregreply.setName(user.getName());
-        stdregreply.setAge(user.getAge());
-        stdregreply.setRegistrationNumber(user.getRegistrationNumber());
-        stdregreply.setRegistrationStatus("Successful");
-
-
-        return stdregreply;
+        DatabaseConnectionFactory dc = new DatabaseConnectionFactory("team7User", "HAckCaryTeam7");
+        UserRegistrationSave register  = new UserRegistrationSave(dc);
+        return register.registerUser(userReg);
         
 	}
 

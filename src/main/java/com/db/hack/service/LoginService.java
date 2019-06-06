@@ -23,9 +23,13 @@ public class LoginService {
 
 			try(Connection conn = dataBaseConnectionFactory.getConnection();
 				Statement select = conn.createStatement();
-				ResultSet result = select.executeQuery("Select count(*) from dbo.users where userid = '"+login.getLoginID()+"' AND passwd='"+login.getPasswd()+"'")){
+				ResultSet result = select.executeQuery("Select * from dbo.users where userid = '"+login.getLoginID()+"' AND passwd='"+login.getPasswd()+"'")){
+				if(result.next())
+				{
+					if(result.getString("passwd").equals(login.getPasswd()))
+					return true;
 
-				return result.next();
+				}
 
 			} catch (Exception e) {
 				e.printStackTrace();

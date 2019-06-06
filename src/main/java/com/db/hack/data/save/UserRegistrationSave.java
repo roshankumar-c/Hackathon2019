@@ -1,12 +1,12 @@
 package com.db.hack.data.save;
 
+import com.db.hack.beans.Login;
 import com.db.hack.beans.QuizResult;
 import com.db.hack.beans.UserRegistration;
 import com.db.hack.databse.DatabaseConnectionFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Calendar;
 
 /**
  * Created by Roshan on 6/4/2019.
@@ -21,57 +21,40 @@ public class UserRegistrationSave {
 
 
 
-    public Boolean saveQuizResult(UserRegistration userReg){
-        Connection conn = dataBaseConnectionFactory.getConnection();
-        if (conn!=null)
+    public Boolean registerUser(UserRegistration userReg){
+
+        try(Connection conn = dataBaseConnectionFactory.getConnection())
         {
-            try
-            {
-                // the mysql insert statement
-                String query = "INSERT INTO dbo.users (first_name, last_name, userid, passwd, " +
-                        "role, schoool, grade, is_certified, created_date ) VALUES"
-                        + " (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            // the mysql insert statement
+            String query = "INSERT INTO dbo.users (first_name, last_name, userid, passwd, " +
+                    "role, schoool, grade, is_certified, created_date ) VALUES"
+                    + " (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                // create the mysql insert preparedstatement
-                PreparedStatement preparedStmt = conn.prepareStatement(query);
-                preparedStmt.setString (1, userReg.getFirstName());
-                preparedStmt.setInt (2, Integer.parseInt(userReg.getLastName()));
-                preparedStmt.setInt   (3, Integer.parseInt(userReg.getRole()));
+            // create the mysql insert preparedstatement
+            java.sql.Date ourJavaDateObject = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
-                // execute the preparedstatement
-                preparedStmt.execute();
-               // Statement select = conn.createStatement();
-                //select.execute("INSERT INTO dbo.test_results (user_id, quiz_id, score) VALUES("++","+quizResult.getQuizid()+","+quizResult.getTestscore()+")");
-                System.out.println("saved data in database");
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            preparedStmt.setString (1, userReg.getFirstName());
+            preparedStmt.setString(2, userReg.getLastName());
+            preparedStmt.setString (3, userReg.getUsername());
+            preparedStmt.setString(4, userReg.getPassword());
+            preparedStmt.setString(5, userReg.getCourse());
+            preparedStmt.setString(6, userReg.getCourse());
+            preparedStmt.setString(7, userReg.getGrade());
+            preparedStmt.setString(8, "false");
+            preparedStmt.setDate  (9, ourJavaDateObject);
 
-                /**
-                 * CREATE TABLE [dbo].[users](
-                 [ID] [int] IDENTITY(1,1) NOT NULL,
-                 [first_name] varchar NULL,
-                 [last_name] varchar NULL,
-                 [userid] varchar NULL,
-                 [passwd] varchar NULL,
-                 [role] varchar NULL,
-                 [schoool] varchar NULL,
-                 [grade] varchar NULL,
-                 [is_certified] varchar NULL,
-                 [created_date] [datetime] NULL,
-                 */
-                return true;
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-            }finally {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+        // execute the preparedstatement
+            preparedStmt.execute();
+            System.out.println("saved data in database");
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return false;
     }
+
 
 }
