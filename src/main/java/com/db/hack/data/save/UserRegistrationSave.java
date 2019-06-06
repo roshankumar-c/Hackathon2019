@@ -40,7 +40,7 @@ public class UserRegistrationSave {
             preparedStmt.setString(2, userReg.getLastName().trim());
             preparedStmt.setString (3, userReg.getUsername().trim());
             preparedStmt.setString(4, userReg.getPassword().trim());
-            preparedStmt.setString(5, userReg.getCourse().trim());
+            preparedStmt.setString(5, "Student");
             preparedStmt.setString(6, userReg.getCourse().trim());
             preparedStmt.setString(7, userReg.getGrade().trim());
             preparedStmt.setInt(8, 0);
